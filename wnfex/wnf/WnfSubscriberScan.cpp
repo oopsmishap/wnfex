@@ -27,33 +27,20 @@ bool WnfSubscriberScan::init()
         Sleep( 1500 );
     }
 
-    // hacky but standard GetVersion is broken
+    auto version_number = win::get_version();
 
-    using RtlGetVersionFn =
-        NTSTATUS( NTAPI* )( _Out_ OSVERSIONINFOEXW* );
-
-    static auto RtlGetVersion =
-        ( RtlGetVersionFn )GetProcAddress(
-            GetModuleHandle( "ntdll.dll" ), "RtlGetVersion" );
-
-    auto osvi = OSVERSIONINFOEXW{ sizeof( OSVERSIONINFOEXW ) };
-
-    osvi.dwOSVersionInfoSize = sizeof( OSVERSIONINFOEXW );
-
-    if( RtlGetVersion( &osvi ) != 0 )
-    {
-        log_err( "Could not get windows version, defaulting to pre Windows 11" );
-        Sleep( 1500 );
-    }
-
-    if( osvi.dwBuildNumber >= 22000 )
+    if( version_number >= 22000 )
     {
         log_info( "Using Windows 11 WNF Structs" );
         m_windows11 = true;
     }
-    else
+    else if( version_number != 0 )
     {
         log_info( "Using Pre Windows 11 WNF Structs" );
+    }
+    else
+    {
+        log_err( "Could not get windows version, defaulting to pre Windows 11" );
     }
 
     return find_subscriber_table();

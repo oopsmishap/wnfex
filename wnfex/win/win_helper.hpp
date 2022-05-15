@@ -97,4 +97,28 @@ namespace win
         }
         return res;
     }
+
+    _FORCEINLINE_
+    uint32_t get_version()
+    {
+        // hacky but standard GetVersion is broken
+
+        using RtlGetVersionFn =
+            NTSTATUS( NTAPI* )( _Out_ OSVERSIONINFOEXW* );
+
+        static auto RtlGetVersion =
+            reinterpret_cast< RtlGetVersionFn >( GetProcAddress(
+                GetModuleHandle( "ntdll.dll" ), "RtlGetVersion" ) );
+
+        auto osvi = OSVERSIONINFOEXW{ sizeof( OSVERSIONINFOEXW ) };
+
+        osvi.dwOSVersionInfoSize = sizeof( OSVERSIONINFOEXW );
+
+        if( RtlGetVersion( &osvi ) != 0 )
+        {
+            return 0;
+        }
+
+        return static_cast< uint32_t >( osvi.dwBuildNumber );
+    }
 }
