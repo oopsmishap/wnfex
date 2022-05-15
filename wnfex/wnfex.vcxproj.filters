@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="util">
+      <UniqueIdentifier>{92ec2d5c-7080-476a-9df4-c259dafd50f2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="win">
+      <UniqueIdentifier>{4d33875f-9691-4588-b545-c8a968488b83}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="wnf">
+      <UniqueIdentifier>{a0a6983f-7f31-4ca4-8b6c-76d9437209ad}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="util\Process.hpp">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="util\argparse.hpp">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="util\log.hpp">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="util\Module.hpp">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="util\Pattern.hpp">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="util\RBTreeRemote.hpp">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="util\tabulate.hpp">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="win\win_structs.hpp">
+      <Filter>win</Filter>
+    </ClInclude>
+    <ClInclude Include="win\win_helper.hpp">
+      <Filter>win</Filter>
+    </ClInclude>
+    <ClInclude Include="wnf\wnf_funcs.hpp">
+      <Filter>wnf</Filter>
+    </ClInclude>
+    <ClInclude Include="wnf\WnfSubscriberScan.hpp">
+      <Filter>wnf</Filter>
+    </ClInclude>
+    <ClInclude Include="wnf\wnf_names.hpp">
+      <Filter>wnf</Filter>
+    </ClInclude>
+    <ClInclude Include="wnf\wnf_structs.hpp">
+      <Filter>wnf</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="util\Process.cpp">
+      <Filter>util</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="util\Pattern.cpp">
+      <Filter>util</Filter>
+    </ClCompile>
+    <ClCompile Include="wnf\WnfSubscriberScan.cpp">
+      <Filter>wnf</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
